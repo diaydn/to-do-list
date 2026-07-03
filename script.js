@@ -24,7 +24,6 @@ gorevler.forEach(function (gorevYazi) {
 
     liste.appendChild(li);
 
-    // SİL
     btnSil.addEventListener("click", function () {
 
         li.remove();
@@ -36,7 +35,6 @@ gorevler.forEach(function (gorevYazi) {
         localStorage.setItem("gorevler", JSON.stringify(gorevler));
     });
 
-    // CHECKBOX (sadece görsel)
     checkbox.addEventListener("change", function () {
 
         if (checkbox.checked) {
@@ -52,7 +50,7 @@ gorevler.forEach(function (gorevYazi) {
 });
 
 
-// GÖREV EKLE
+
 btnEkle.addEventListener("click", function () {
 
     const gorevYazi = gorevInput.value.trim();
@@ -81,12 +79,12 @@ btnEkle.addEventListener("click", function () {
 
     gorevInput.value = "";
 
-    // LOCALSTORAGE EKLE
+   
     let gorevler = JSON.parse(localStorage.getItem("gorevler")) || [];
     gorevler.push(gorevYazi);
     localStorage.setItem("gorevler", JSON.stringify(gorevler));
 
-    // SİL
+
     btnSil.addEventListener("click", function () {
 
         li.remove();
@@ -98,7 +96,7 @@ btnEkle.addEventListener("click", function () {
         localStorage.setItem("gorevler", JSON.stringify(gorevler));
     });
 
-    // CHECKBOX
+ 
     checkbox.addEventListener("change", function () {
 
         if (checkbox.checked) {
