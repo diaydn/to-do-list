@@ -2,6 +2,16 @@ const gorevInput = document.getElementById("gorevInput");
 const btnEkle = document.getElementById("btnEkle");
 const liste = document.getElementById("liste");
 
+const toplam = document.getElementById("toplam");
+const tamamlanan = document.getElementById("tamamlanan");
+
+function sayaclariGuncelle() {
+    const tumGorevler = liste.querySelectorAll("li");
+    const tamamlananGorevler = liste.querySelectorAll("input[type='checkbox']:checked");
+
+    toplam.textContent = tumGorevler.length;
+    tamamlanan.textContent = tamamlananGorevler.length;
+}
 
 const gorevler = JSON.parse(localStorage.getItem("gorevler")) || [];
 
@@ -33,6 +43,8 @@ gorevler.forEach(function (gorevYazi) {
         gorevler = gorevler.filter(g => g !== gorevYazi);
 
         localStorage.setItem("gorevler", JSON.stringify(gorevler));
+
+        sayaclariGuncelle();
     });
 
     checkbox.addEventListener("change", function () {
@@ -45,11 +57,12 @@ gorevler.forEach(function (gorevYazi) {
             span.style.color = "";
         }
 
+        sayaclariGuncelle();
     });
 
 });
 
-
+sayaclariGuncelle();
 
 btnEkle.addEventListener("click", function () {
 
@@ -79,11 +92,11 @@ btnEkle.addEventListener("click", function () {
 
     gorevInput.value = "";
 
-   
     let gorevler = JSON.parse(localStorage.getItem("gorevler")) || [];
     gorevler.push(gorevYazi);
     localStorage.setItem("gorevler", JSON.stringify(gorevler));
 
+    sayaclariGuncelle();
 
     btnSil.addEventListener("click", function () {
 
@@ -94,9 +107,10 @@ btnEkle.addEventListener("click", function () {
         gorevler = gorevler.filter(g => g !== gorevYazi);
 
         localStorage.setItem("gorevler", JSON.stringify(gorevler));
+
+        sayaclariGuncelle();
     });
 
- 
     checkbox.addEventListener("change", function () {
 
         if (checkbox.checked) {
@@ -107,6 +121,7 @@ btnEkle.addEventListener("click", function () {
             span.style.color = "";
         }
 
+        sayaclariGuncelle();
     });
 
 });
